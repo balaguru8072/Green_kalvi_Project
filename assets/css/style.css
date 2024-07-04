@@ -8979,7 +8979,10 @@ footer {
 }
 
 /* Desktop Mini */
-@media only screen and (min-width: 992px) and (max-width: 1199px) {
+@media only screen and (min-width: 992px) and (max-width: 1400px) {
+	.contact-items-footer{
+		width: 50% !important;
+	}
 }
 
 
