@@ -1351,7 +1351,7 @@
                             <img src="assets/img/illustration/10.png" alt="Image Not Found">
                             <h5 class="sub-title">Have Questions?</h5>
                             <h2 class="heading">Send us a massage</h2>
-                            <form action="assets/mail/contact.php" method="POST" class="contact-form contact-form">
+                            <form  class="contact-form contact-form">
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form-group">
@@ -1371,7 +1371,7 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <input class="form-control" id="phone" name="phone" placeholder="Phone"
+                                            <input class="form-control" id="contact" name="contact" placeholder="Phone"
                                                 type="text">
                                             <span class="alert-error"></span>
                                         </div>
@@ -1380,14 +1380,14 @@
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form-group comments">
-                                            <textarea class="form-control" id="comments" name="comments"
-                                                placeholder="Tell Us About Project *"></textarea>
+                                            <textarea class="form-control" id="subject" name="message"
+                                                placeholder="Tell Us Message *"></textarea>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-12">
-                                        <button type="submit" name="submit" id="submit">
+                                        <button type="submit" name="submit" id="submit" onclick="sendEmail()">
                                             <i class="fa fa-paper-plane"></i> Get in Touch
                                         </button>
                                     </div>
@@ -1722,6 +1722,37 @@
         });
 
     </script>
+
+<script>
+    function sendEmail() {
+        let name = document.getElementById('name').value;
+        let email = document.getElementById('email').value;
+        let contact = document.getElementById('contact').value;
+        let subject = document.getElementById('subject').value;
+        // let message = document.getElementById('message').value;
+
+        let body = "name:" + name + "<br/> email:" + email + "<br/>Contact:" + contact + "<br/> Subject:" + subject ;
+
+        // console.log(body, "objects sent");
+
+        Email.send({
+            SecureToken: "dd3709a9-cad9-4ec8-ad12-b2703a69123f",
+            To: 'balagurus8072@gmail.com',
+            From: "balagurus8072@gmail.com",
+            Subject: "contact us in your massage",
+            Body: body,
+            Attachments: [
+                {
+                    name: "smtpjs.png",
+                    path: "https://networkprogramming.files.wordpress.com/2017/11/smtpjs.png"
+                }]
+        }).then(
+            message => alert(message)
+        );
+    }
+</script>
+
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
     <script src="assets/js/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
